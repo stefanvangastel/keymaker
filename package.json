@@ -1,0 +1,19 @@
+{
+  "name": "bigchaindb-keygen",
+  "version": "1.0.0",
+  "description": "Webservice voor genereren keys",
+  "main": "index.js",
+  "dependencies": {
+    "bigchaindb-driver": "4.1.0",
+    "bip39": "^2.5.0",
+    "base-x": "3.0.4",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
