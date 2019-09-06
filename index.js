@@ -33,18 +33,20 @@ app.get('/generate/:username?', function(req, res) {
   var private = true
 
   //Get forwarded remote user header, strip domain (use first 7 chars)
-  var username = req.header('X-Forwarded-Remote-User').slice(0,7); 
+  var usernameFromHeader = req.header('X-Forwarded-Remote-User'); 
 
-  console.log('Reading X-Forwarded-Remote-User from header: ' + username);
+  console.log('Reading X-Forwarded-Remote-User from header: ' + usernameFromHeader);
 
   //Check currentuser given
-  if ( ! username ) {
+  if ( ! usernameFromHeader ) {
       // We shield our clients from internal errors, but log them
       res.statusCode = 400;
       return res.json({
           errors: ['Invalid request, no X-Forwarded-Remote-User provided']
       });
   }
+
+  var username = usernameFromHeader.slice(0,7);
 
   //Change to public mode if differentusername set
   if(req.params.username){
