@@ -1,6 +1,6 @@
 # Keygenerator webservice
 
-RESTfull webservice that generates reproducable Ed25519 keypairs to use in (amongst others) BighChainDB.
+RESTfull webservice that generates reproducible Ed25519 keypairs to use in (amongst others) BighChainDB.
 
 ## Install
 
