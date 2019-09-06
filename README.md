@@ -1,0 +1,17 @@
+# Keygenerator webservice
+
+RESTfull webservice that generates reproducable Ed25519 keypairs to use in (amongst others) BighChainDB.
+
+## Install
+
+* Make sure you have NodeJS (>= 10) installed 
+* Clone this repo
+* `cd cloneddir`
+* Run `npm install`
+* Run `node index.js`
+
+## Context
+
+![Architecture](architecture.svg)
+
+Source: https://mermaidjs.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVERcblxuVShVc2VyKSAtLT4gQShXZWJBcHApXG5cbkEgLS0gaHR0cHMgLS0-IEsoS2V5bWFrZXIgQVBJKVxuQSAtLSBodHRwcyAtLT4gQyhBZGRyZXNzYm9vayBBUEkpXG5cbkEgLS0gaHR0cHMgLS0-IEIxKEJpZ2NoYWluREIgMSlcbkEgLS0gaHR0cHMgLS0-IEIyKEJpZ2NoYWluREIgMilcbkEgLS0gaHR0cHMgLS0-IEIzKEJpZ2NoYWluREIgMylcblxuc3ViZ3JhcGggQmlnY2hhaW5EQiBOb2RlIDNcbkIzIC0tPiBNMyhNb25nb0RCIDMpXG5CMyAtLT4gVDMoVGVuZGVybWludCAzKSBcbmVuZFxuc3ViZ3JhcGggQmlnY2hhaW5EQiBOb2RlIDJcbkIyIC0tPiBNMihNb25nb0RCIDIpXG5CMiAtLT4gVDIoVGVuZGVybWludCAyKSBcbmVuZFxuc3ViZ3JhcGggQmlnY2hhaW5EQiBOb2RlIDFcbkIxIC0tPiBNMShNb25nb0RCIDEpXG5CMSAtLT4gVDEoVGVuZGVybWludCAxKSBcbmVuZFxuXG5UMSAtLS0gVDJcblQxIC0tLSBUM1xuVDIgLS0tIFQzXG5cbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In19

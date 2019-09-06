@@ -1,13 +1,13 @@
-//Load Express
+//Load Express for webserver functionality
 var express = require('express');
 var app = express();
 var port = 3000;
 
-//BigChainDB key requirements
+//BigChainDB libs for seed and key generation
 var driver = require('bigchaindb-driver')
 var bip39 = require('bip39');
 
-//Read .env
+//Read .env config file, containing the environment specific salt
 require('dotenv').config();
 
 /**
@@ -18,12 +18,11 @@ app.get('/', function(req, res) {
       'usage':{
           'GET': {
               '/generate/': 'Generates public - private keypair for current user',
-              '/generate/<u-account>': 'Retrieves public key for specifiec user'
+              '/generate/<username>': 'Retrieves public key for specifiec user'
           }
       }
   });
 });
-
 
 /**
  * Genereer sleutel gebaseerd op seed en salt
@@ -47,7 +46,6 @@ app.get('/generate/:username?', function(req, res) {
       });
   }
 
-
   //Change to public mode if differentusername set
   if(req.params.username){
     
@@ -67,19 +65,23 @@ app.get('/generate/:username?', function(req, res) {
   }
   var salt = process.env.SALT;
 
+  //Assemble mnemonic based on username and secret salt
   var mnemonic = username+' '+salt;
 
   console.log('Generating seed from: ' + mnemonic);
 
+  //Generate a seed using the bip39 lib
   var seed = bip39.mnemonicToSeed(mnemonic);
 
+  //Use the first 32 bytes to generate a Ed25519 keypair
   var keypair = new driver.Ed25519Keypair(seed.slice(0, 32));
 
-  //Remove private key
+  //Remove private key if this is a request for a public key
   if(private == false){
     delete keypair.privateKey;
   }
 
+  //Assemble the response
   var response = {
   	'username' : username,
     'keypair' : keypair
@@ -90,4 +92,5 @@ app.get('/generate/:username?', function(req, res) {
 
 });
 
+// Start the webserver
 app.listen(port, () => console.log(`Server listing on :${port}`))
